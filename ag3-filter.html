@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular/angular.js"></script>
+	</head>
+	<body>
+		
+		<div ng-app="myApp">
+			
+			{{'hello js' | replace : 'a' : 'b' : 'c'}}
+			
+			{{0.124342 | currency}}
+			
+		</div>
+		
+		<script>
+			var app = angular.module('myApp', []);
+			
+			//自定义过滤器
+			app.filter('replace', function(){
+				
+				//需要返回一个过滤器处理的方法
+				return function(input, ...rest){
+					//需要过滤处理的值
+					console.log(input);
+					//过滤的参数
+					console.log(rest);
+					
+					return input.replace(/js/, 'javascript');
+				}
+				
+			})
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src=""></script>
+		<!-- 如果项目中有引入jquery，必须在angular引入之前引入 -->
+		<script src="angular/angular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			
+			app.run(['$rootScope', function($rootScope){
+				$rootScope.val = 12;
+				
+				$rootScope.fun = function(){
+					return $rootScope.val + 5;
+				}
+				
+				//监听
+				//参数1：需要监听的值
+				//参数2：监听到变化会触发的方法
+				$rootScope.$watch('val', function(newVal, oldVal){
+//					console.log('发生了变化。newval：'+newVal+'   oldval:'+oldVal);
+				})
+				
+				$rootScope.$watch('val*2', function(newVal, oldVal){
+//					console.log('发生了变化。newval：'+newVal+'   oldval:'+oldVal);
+				})
+				
+				$rootScope.$watch($rootScope.fun, function(newVal, oldVal){
+//					console.log('发生了变化。newval：'+newVal+'   oldval:'+oldVal);
+				})
+			}])
+			
+			app.controller('oneCtrl', ['$scope', function($scope){
+				$scope.val = 'hello';
+				
+				$scope.$watch('val', function(newVal, oldVal){
+					console.log('$scope发生了变化。newval：'+newVal+'   oldval:'+oldVal);
+				})
+				
+			}])
+			
+		</script>
+	</head>
+	<body>
+		
+		<div ng-app="myApp">
+			
+			<input type="number" ng-model="val" />
+			
+			
+			<hr style="margin: 50px 0;"/>
+			<div ng-controller="oneCtrl">
+				<input type="text" ng-model="val" />
+				
+			</div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

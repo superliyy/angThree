@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../angular/angular.js"></script>
+		<link type="text/css" rel="stylesheet" href="lib/tabsStyle.css" />
+	</head>
+	<body>
+		
+		<div ng-app="myApp">
+			
+			<div class="content one" ng-if="selectIndex == 0">1</div>
+	
+			<div class="content two" ng-if="selectIndex == 1">2</div>
+	
+			<div class="content three" ng-if="selectIndex == 2">3</div>
+			
+			<div class="content four" ng-if="selectIndex == 3">4</div>
+			
+			<my-tabs data="tabsTitle" tab-selected="tabsChange($index)"></my-tabs>
+			
+			
+		</div>
+		
+		<script src="lib/tabs.js"></script>
+		<script>
+			var app = angular.module('myApp', ['tabs-module']);
+
+			app.run(['$rootScope', function($rootScope){
+				
+				$rootScope.selectIndex = 0;
+				
+				$rootScope.tabsTitle = ['首页', '分类', '我的', '设置'];
+				
+				
+				$rootScope.tabsChange = function(n){
+					console.log('外部的方法触发了'+n);
+					$rootScope.selectIndex = n;
+				}
+				
+			}])
+			
+		</script>
+		
+	</body>
+</html>

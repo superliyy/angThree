@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body,
+#app {
+	width: 100%;
+	height: 100%;
+}
+
+.tabs {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 49px;
+	display: flex;
+	background: darkkhaki;
+	border-top: 1px solid #ddd;
+}
+
+.tabs li {
+	text-decoration: none;
+	flex: 1;
+	text-align: center;
+	display: block;
+	line-height: 49px;
+	color: #fff;
+}
+
+.content {
+	width: 100%;
+	position: absolute;
+	top: 100px;
+	bottom: 49px;
+	left: 0;
+}
+
+.one {
+	background: red;
+}
+
+.two {
+	background: green;
+}
+
+.three {
+	background: darkcyan;
+}
+.four{
+	background: #BDB76B;
+}

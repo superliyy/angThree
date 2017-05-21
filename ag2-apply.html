@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src=""></script>
+		<!-- 如果项目中有引入jquery，必须在angular引入之前引入 -->
+		<script src="angular/angular.js"></script>
+		<script>
+			var app = angular.module('myApp', []);
+			
+			app.run(['$rootScope', function($rootScope){
+				
+			}])
+			
+			app.controller('oneCtrl', ['$scope', function($scope){
+				$scope.val = 'hello';
+				
+				//凡是不是angular的方法内部，对作用域上进行值的修改，dom结构都接收不到
+				setTimeout(function(){
+					
+					//当dom结构收不到值的变化时，使用$apply传播出去
+					$scope.$apply(function(){
+						$scope.val = 'world';
+					})
+					
+					
+					console.log($scope.val);
+					
+				}, 2000);
+				
+				$scope.btnAction = function(){
+					console.log($scope.val);
+				}
+				
+			}])
+			
+		</script>
+	</head>
+	<body>
+		
+		<div ng-app="myApp">
+		
+			<div ng-controller="oneCtrl">
+				
+				<input type="text" ng-model="val" />
+				
+				<button ng-click="btnAction()">按钮</button>
+				
+				
+			</div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

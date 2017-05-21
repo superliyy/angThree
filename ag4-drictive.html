@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular/angular.js"></script>
+	</head>
+	<body>
+		
+		<div ng-app="myApp">
+			
+			<my-hello></my-hello>
+			
+			<div class="my-hello"></div>
+			
+			<!-- directive:my-hello -->
+			
+			<div my-hello></div>
+			
+			
+		
+			<!-- 模板的结构，一定要放在app的作用范围之内 -->
+			<script type="text/ng-template" id="tmp">
+				
+				<div class="wrapper" style="margin: 20px; border: 1px solid #ddd;">
+					<p> hello world </p>
+					<p> hello world </p>
+					<p> hello world </p>
+					<p> hello world </p> 
+				</div>
+				
+			</script>
+		</div>
+		
+		<script>
+			var app = angular.module('myApp', []);
+			
+			//自定义指令
+			//参数1：指令名字
+			//参数2：实现方法
+			app.directive('myHello', function(){
+				
+				return {
+					//指令的形式
+					//E:element 标签
+					//C： 类名
+					//M：注释
+					//A:属性
+					restrict: 'ECMA',
+					replace: true,
+//					template: '<p>hello world</p>'
+					//script标签的id值
+//					templateUrl: 'tmp'
+					//写相对页面的路径
+					templateUrl: 'tmp.html'
+					
+					
+					
+				} 
+				
+			})
+
+			app.run(['$rootScope', function($rootScope){
+
+			}])
+			
+		</script>
+		
+	</body>
+</html>

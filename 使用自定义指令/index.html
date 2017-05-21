@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../angular/angular.js"></script>
+		
+		<link type="text/css" rel="stylesheet" href="lib/tabsStyle.css" />
+		<script src="lib/tabs.js"></script>
+		
+	</head>
+	<body ng-app="myApp">
+		
+		
+		<my-tabs data="data" tab-selected="test($index)"></my-tabs>
+		
+		<script>
+			var app = angular.module('myApp', ['tabs-module']);
+			
+			app.run(['$rootScope', function($rootScope){
+				
+				$rootScope.data = ['abc', 'efg', 'hij'];
+			
+				$rootScope.test = function(index){
+					
+					
+					
+				}
+				
+			}])
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>
